@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-// static list of songs that is unchanged so expecting no argument in the function
+// static list of songs so expecting no argument in the function
 const songsReducer = () => {
   return [
     { title: 'No Scrubs', duration: '4:05' },
