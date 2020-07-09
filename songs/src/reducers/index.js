@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 // static list of songs that is unchanged so expecting no argument in the function
 const songsReducer = () => {
   return [
@@ -15,3 +17,8 @@ const selectedSongReducer = (selectedSong = null, action) => {
 
   return selectSong;
 };
+
+export default combineReducers({
+  songs: songsReducer,
+  selectedSong: selectedSongReducer,
+});
