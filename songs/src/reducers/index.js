@@ -15,7 +15,7 @@ const selectedSongReducer = (selectedSong = null, action) => {
     return action.payload;
   }
 
-  return selectSong;
+  return selectedSong;
 };
 
 export default combineReducers({
