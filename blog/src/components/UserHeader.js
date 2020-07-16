@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions';
 
 class UserHeader extends Component {
-  componentDidMount() {
-    this.props.fetchUser(this.props.userId);
-  }
-
   render() {
     const { user } = this.props;
 
@@ -20,9 +15,9 @@ const mapStateToProps = (state, ownProps) => {
   return { user: state.users.find(user => user.id === ownProps.userId) };
 };
 
-export default connect(mapStateToProps, { fetchUser })(UserHeader);
+export default connect(mapStateToProps)(UserHeader);
 
-// Usual way
+// mapStateToProps takes state as its only argument
 
 // class UserHeader extends Component {
 //   componentDidMount() {
@@ -31,12 +26,8 @@ export default connect(mapStateToProps, { fetchUser })(UserHeader);
 
 //   render() {
 //     const user = this.props.users.find(user => user.id === this.props.userId);
-
 //     if (!user) return null;
-
-//     return <div className = "header" > {
-//       user.name
-//     } < /div>;
+//     return <div className = "header">{user.name}< /div>;
 //   }
 // }
 
@@ -46,6 +37,4 @@ export default connect(mapStateToProps, { fetchUser })(UserHeader);
 //   };
 // };
 
-// export default connect(mapStateToProps, {
-//   fetchUser
-// })(UserHeader);
+// export default connect(mapStateToProps, {fetchUser})(UserHeader);
