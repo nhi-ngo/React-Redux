@@ -27,7 +27,7 @@ export default connect(mapStateToProps)(UserHeader);
 //   render() {
 //     const user = this.props.users.find(user => user.id === this.props.userId);
 //     if (!user) return null;
-//     return <div className = "header">{user.name}< /div>;
+//     return <div className = "header">{user.name}</div>;
 //   }
 // }
 
