@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { signIn, signOut } from '../actions';
 class GoogleAuth extends Component {
   state = { isSignedIn: null };
 
@@ -13,23 +14,26 @@ class GoogleAuth extends Component {
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
-          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
-          this.auth.isSignedIn.listen(this.onAuthChange);
+          this.setState({ isSignedIn: this.auth.isSignedIn.get() }); // returns a boolean of whether current user is currently signed in
+          this.auth.isSignedIn.listen(this.onAuthChange); // Listen for changes in current user's sign-in state. A function that takes a boolean value.
         });
     });
   }
 
-  // auth status changes without refreshing the page
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  onAuthChange = (signedIn) => {
+    if (signedIn) {
+      this.props.signIn();
+    } else {
+      this.props.signOut();
+    }
   };
 
-  onSignIn = () => {
-
+  onSignInClick = () => {
+    this.auth.signIn();
   }
 
-  onSignOut = () => {
-    
+  onSignOutClick = () => {
+    this.auth.signOut();
   }
 
   renderAuthButton() {
@@ -37,13 +41,13 @@ class GoogleAuth extends Component {
       return null;
     } else if (this.state.isSignedIn) {
       return (
-        <button className="ui red google button">
+        <button onClick={this.onSignOutClick} className="ui red google button">
           <i className="google icon"></i>
           Sign Out
         </button>);
     } else {
       return (
-        <button className="ui red google button">
+        <button onClick={this.onSignInClick} className="ui red google button">
           <i className="google icon"></i>
             Sign In
         </button>
@@ -56,4 +60,4 @@ class GoogleAuth extends Component {
   }
 }
 
-export default GoogleAuth;
+export default connect(null, { signIn, signOut })(GoogleAuth);
