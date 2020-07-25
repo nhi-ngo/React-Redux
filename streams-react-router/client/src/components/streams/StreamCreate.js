@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, clearSubmitErrors } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 class StreamCreate extends Component {
   renderError({ error, touched }) {
@@ -13,14 +13,15 @@ class StreamCreate extends Component {
   }
 
   renderInput = ({ input, label, meta }) => {
+    const className = `field ${meta.touched && meta.error ? 'error' : ''}`; // className="field error"
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input} type="text" autoComplete="off" />
         {this.renderError(meta)}
       </div>
     );
-  }
+  };
 
   onSubmit(formValues) {
     console.log(formValues);
