@@ -6,8 +6,8 @@ const Search = () => {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('https://en.wikipedia.org/w/api.php', {
+    const search = async () => {
+      const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
         params: {
           action: 'query',
           list: 'search',
@@ -15,8 +15,23 @@ const Search = () => {
           srsearch: term,
           format: 'json',
         },
-      })
-      .then((res) => (term ? setResults(res.data.query.search) : ''));
+      });
+      setResults(data.query.search);
+    };
+
+    if (term && !results.length) {
+      search();
+    } else {
+      const timeoutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
   }, [term]);
 
   const onInputChange = (e) => {
