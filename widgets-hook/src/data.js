@@ -1,4 +1,4 @@
-const items = [
+export const items = [
   {
     title: 'What is React?',
     content: 'React is a front end javascript framework',
@@ -13,4 +13,17 @@ const items = [
   },
 ];
 
-export default items;
+export const options = [
+  {
+    label: 'The Color Red',
+    value: 'red',
+  },
+  {
+    label: 'The Color Green',
+    value: 'green',
+  },
+  {
+    label: 'A shade of Blue',
+    value: 'blue',
+  },
+];
