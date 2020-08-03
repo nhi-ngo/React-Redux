@@ -7,7 +7,7 @@ class StreamForm extends Component {
       return (
         <div className="ui error message">
           <div className="header">{error}</div>
-        </div>
+        </div> 
       );
     }
   }

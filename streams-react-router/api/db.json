@@ -1,5 +1,6 @@
 {
-  "streams": [{
+  "streams": [
+    {
       "title": "My Stream",
       "description": "This is a great stream.",
       "id": 1
@@ -32,6 +33,12 @@
       "description": "You should not see this on the form page!",
       "userId": "107270151716207074853",
       "id": 7
+    },
+    {
+      "title": "Try editing",
+      "description": "Watch me editing!",
+      "userId": "107270151716207074853",
+      "id": 8
     }
   ]
 }
