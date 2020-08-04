@@ -5,14 +5,20 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener('click', (event) => {
+    const onBodyClick = (event) => {
       // check if elements being clicked on are inside of the form div then return immediately. Otherwise go ahead and call setOpen(false)
       if (ref.current.contains(event.target)) {
         return;
       }
 
       setOpen(false); // close the dropdown
-    });
+    };
+
+    document.body.addEventListener('click', onBodyClick);
+
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    };
   }, []);
 
   const renderedOptions = options.map((option) => {
