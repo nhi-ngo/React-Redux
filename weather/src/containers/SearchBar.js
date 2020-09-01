@@ -5,10 +5,6 @@ import { fetchWeather } from '../actions';
 class SearchBar extends Component {
   state = { term: '' };
 
-  // componentDidMount() {
-  //   this.props.fetchWeather();
-  // }
-
   onFormSubmit = e => {
     e.preventDefault();
     this.props.fetchWeather(this.state.term);
