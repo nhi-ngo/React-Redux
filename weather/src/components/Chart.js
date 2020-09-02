@@ -15,7 +15,7 @@ const Chart = ({ data, color, units }) => (
       <SparklinesReferenceLine type="avg" />
     </Sparklines>
     <div>
-      {average(data)} {units}
+      {average(data)}{units}
     </div>
   </div>
 );
