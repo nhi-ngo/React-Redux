@@ -14,8 +14,6 @@ module.exports = {
         test: /\.ejs$/,
         loader: 'ejs-loader',
       },
-    ],
-    loaders: [
       {
         exclude: /node_modules/,
         loader: 'babel',
@@ -25,8 +23,12 @@ module.exports = {
       },
     ],
   },
+
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.ejs'],
+  },
+  resolveLoader: {
+    modules: ['node_modules', path.join(__dirname, '../node_modules')],
   },
   devServer: {
     historyApiFallback: true,
