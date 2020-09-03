@@ -2,22 +2,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: path.resolve(__dirname, './src/index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     filename: 'bundle.js',
   },
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.ejs$/,
-        loader: 'ejs-loader',
-      },
-      {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
-        query: {
+        options: {
           presets: ['react', 'es2015', 'stage-1'],
         },
       },
@@ -25,7 +22,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.ejs'],
+    extensions: ['', '.js', '.jsx'],
   },
   resolveLoader: {
     modules: ['node_modules', path.join(__dirname, '../node_modules')],
