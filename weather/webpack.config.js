@@ -9,6 +9,12 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
+    rules: [
+      {
+        test: /\.ejs$/,
+        loader: 'ejs-loader',
+      },
+    ],
     loaders: [
       {
         exclude: /node_modules/,
