@@ -11,7 +11,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: 'JS_JSX_PATTERN',
         exclude: /node_modules/,
         loader: 'babel',
         query: {
