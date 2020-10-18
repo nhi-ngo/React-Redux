@@ -1,10 +1,16 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import PostList from './PostList'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>App</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={PostList} />
+        {/* <Route path="/posts/new" exact component={PostCreate} /> */}
+        {/* <Route path="/posts/:id" exact component={PostShow} /> */}
+      </Switch>
+    </Router>
   )
 }
 
