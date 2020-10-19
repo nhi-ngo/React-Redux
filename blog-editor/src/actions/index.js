@@ -20,3 +20,12 @@ export const createPost = async (formValues) => {
     payload: response.data,
   }
 }
+
+export const fetchPost = async (id) => {
+  const response = await posts.get(`posts/${id}${API_KEY}`)
+
+  return {
+    type: FETCH_POST,
+    payload: response.data,
+  }
+}
