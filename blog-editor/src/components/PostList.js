@@ -12,30 +12,22 @@ class PostList extends Component {
   renderPosts() {
     return this.props.posts.map((post) => {
       return (
-        <div>
-          <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item">
-            {post.title}
-          </Link>
-        </div>
+        <li key={post.id} className="list-group-item">
+          <Link to={`/posts/${post.id}`}>{post.title}</Link>
+        </li>
       )
     })
-  }
-
-  renderCreate() {
-    return (
-      <div className="text-right">
-        <Link to="/posts/new" className="btn btn-primary">
-          Add a Post
-        </Link>
-      </div>
-    )
   }
 
   render() {
     return (
       <div>
-        {this.renderCreate()}
-        <h1>Posts</h1>
+        <div className="text-right">
+          <Link to="/posts/new" className="btn btn-primary">
+            Add a Post
+          </Link>
+        </div>
+        <h2>Posts</h2>
         <ul className="list-group">{this.renderPosts()}</ul>
       </div>
     )

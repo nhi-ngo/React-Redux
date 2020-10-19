@@ -6,6 +6,7 @@ import PostForm from './PostForm'
 
 class PostCreate extends Component {
   onSubmit = (formValues) => {
+    this.props.history.push('/')
     this.props.createPost(formValues)
   }
 

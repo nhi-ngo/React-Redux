@@ -12,8 +12,8 @@ export const fetchPosts = async () => {
   }
 }
 
-export const createPost = (formValues) => async () => {
-  const response = await posts.post('/posts', { ...formValues })
+export const createPost = async (formValues) => {
+  const response = await posts.post(`/posts${API_KEY}`, formValues)
 
   return {
     type: CREATE_POST,
