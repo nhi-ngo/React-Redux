@@ -29,3 +29,12 @@ export const fetchPost = async (id) => {
     payload: response.data,
   }
 }
+
+export const deletePost = async (id) => {
+  const response = await posts.delete(`posts/${id}${API_KEY}`)
+
+  return {
+    type: DELETE_POST,
+    payload: id,
+  }
+}

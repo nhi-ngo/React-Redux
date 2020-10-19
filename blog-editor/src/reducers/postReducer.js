@@ -9,6 +9,8 @@ export default (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload }
     case FETCH_POST:
       return { ...state, [action.payload.id]: action.payload }
+    case DELETE_POST:
+      return _.omit(state, action.payload)
     default:
       return state
   }
