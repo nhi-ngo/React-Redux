@@ -6,16 +6,13 @@ import { fetchPost, deletePost } from '../actions'
 
 class PostDelete extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params
-    this.props.fetchPost(id)
+    this.props.fetchPost(this.props.match.params.id)
   }
 
   renderActions() {
-    const { id } = this.props.match.params
-
     const onButtonDelete = () => {
       this.props.history.push('/')
-      this.props.deletePost(id)
+      this.props.deletePost(this.props.match.params.id)
     }
 
     return (
@@ -38,16 +35,12 @@ class PostDelete extends Component {
     return `Are you sure you want to delete the post with title "${this.props.post.title}"?`
   }
 
-  // onDismiss = () => {
-  //   this.props.history.push('/')
-  // }
-
   render() {
     return (
       <Modal
+        title="Delete Post"
         content={this.renderContent()}
         actions={this.renderActions()}
-        // onDismiss={this.onDismiss()}
       />
     )
   }

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { fetchPost } from '../actions'
-import PostDelete from './PostDelete'
 
 class PostShow extends Component {
   componentDidMount() {
@@ -21,24 +20,17 @@ class PostShow extends Component {
 
     return (
       <div>
-        <div className="row align-items-center">
-          <div className="col">
-            <Link to="/">Back to Posts</Link>
-          </div>
-          <div className="col">
-            <div
-              className="btn float-right"
-              data-toggle="modal"
-              data-target="#exampleModalCenter"
-            >
-              <Link to={`/posts/delete/${id}`}>Delete Post</Link>
-            </div>
-          </div>
+        <Link to="/">Back to Posts</Link>
+        <Link to={`/posts/delete/${id}`} className="btn btn-danger float-right">
+          Delete
+        </Link>
+
+        <div className="post-content">
+          <h3 className="my-4">{title}</h3>
+          <h6 className="mb-4">Categories: {categories}</h6>
+          <p>{content}</p>
         </div>
 
-        <h3 className="my-4">{title}</h3>
-        <h6 className="mb-4">Categories: {categories}</h6>
-        <p>{content}</p>
       </div>
     )
   }
